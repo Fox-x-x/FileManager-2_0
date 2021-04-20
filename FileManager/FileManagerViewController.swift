@@ -41,14 +41,6 @@ class FileManagerViewController: UIViewController {
         ftv.register(UITableViewCell.self, forCellReuseIdentifier: "cellId")
         return ftv
     }()
-    
-    private lazy var imagePicker: UIImagePickerController = {
-        let vc = UIImagePickerController()
-        vc.sourceType = .photoLibrary
-        vc.allowsEditing = true
-        vc.delegate = self
-        return vc
-    } ()
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -113,6 +105,12 @@ class FileManagerViewController: UIViewController {
     }
     
     @objc private func addPhotoButtonItemTapped() {
+        
+        let imagePicker = UIImagePickerController()
+        imagePicker.sourceType = .photoLibrary
+        imagePicker.allowsEditing = true
+        imagePicker.delegate = self
+        
         present(imagePicker, animated: true, completion: nil)
     }
     
